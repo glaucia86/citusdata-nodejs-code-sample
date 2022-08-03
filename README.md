@@ -18,6 +18,6 @@ A Citus Data [Hyperscale] code sample using Node.Js API
 
 (under construction)
 
-# ❓ Questions? Comments?
+## ❓ Questions? Comments?
 
 If you have any questions about the code developed, feel free to open an **[ISSUE HERE](https://github.com/glaucia86/citusdata-nodejs-code-sample/issues)**. We'll get back to you soon!
