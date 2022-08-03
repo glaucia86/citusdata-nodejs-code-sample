@@ -4,4 +4,4 @@ CREATE TABLE pharmacy (
   city VARCHAR(255) NOT NULL,
   state VARCHAR(255) NOT NULL,
   zip_code INTEGER NOT NULL
-)
+);

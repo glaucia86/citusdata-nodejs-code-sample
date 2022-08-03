@@ -16,7 +16,49 @@ A Citus Data [Hyperscale] code sample using Node.Js API
 
 ## 🔥 How to run the application locally? 
 
-(under construction)
+You just neeed to follow these steps:
+
+1. Open your PostgreSQL (PG Admin) or Azure Data Studio and make the connections following the image below:
+
+[![citus-nodejs-01.png](https://i.postimg.cc/D0XcSxtg/citus-nodejs-01.png)](https://postimg.cc/9wc9SYXR)
+
+2. Now right click on `pharmacy-api` and `New Query` and create the 'Pharmacy' table
+
+[![citus-nodejs-02.png](https://i.postimg.cc/Hk91Jzmd/citus-nodejs-02.png)](https://postimg.cc/4YySqznS)
+
+```sql
+CREATE TABLE pharmacy (
+  pharmacy_id uuid PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+  pharmacy_name VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  state VARCHAR(255) NOT NULL,
+  zip_code INTEGER NOT NULL
+);
+```
+
+3. Now get your Citus Data [Hyperscale] connection string and include inside the `.env` file.
+
+* .env file
+
+```text
+CITUS_DATABASE_URL=postgres://citus:<citus-password>@c.<citus-resource-name>.postgres.database.azure.com:5432/citus?ssl=true
+```
+
+4. Now go to the `pharmacy-api` folder and then run the following command:
+
+```bash
+npm nodemon
+```
+
+5. Open Postman and go to (GET) `http://localhost:3000/api` if you receive the message below is because the api was connected successfully:
+
+```json
+{
+  "message": "Welcome to the pharmacy API"
+}
+``` 
+
+6. If you want to test all the HTTP verbs, you can use the `pharmacy.http` file.
 
 ## ❓ Questions? Comments?
 
