@@ -12,7 +12,7 @@ const app = express();
 
 // ==> API Routes
 const index = require('./routes/index');
-// const pharmacyRoute = require('./routes/pharmacy.routes');
+const pharmacyRoute = require('./routes/pharmacy.routes');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -20,6 +20,6 @@ app.use(express.json({ type: 'application/json' }));
 app.use(cors());
 
 app.use(index);
-// app.use('/api/', pharmacyRoute);
+app.use('/api/', pharmacyRoute);
 
 module.exports = app;

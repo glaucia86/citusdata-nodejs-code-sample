@@ -1,0 +1,11 @@
+GET http://localhost:3000/api
+
+POST http://localhost:3000/api/pharmacies HTTP/1.1
+content-type: application/json
+
+{
+  "pharmacy_name": "Pharmacy Test 01",
+  "city": "San Diego",
+  "state": "California",
+  "zip_code": 94001
+}
