@@ -27,3 +27,19 @@ exports.createPharmacy = async (req, res) => {
     res.status(500).send({ message: 'Error to create a new Pharmacy' });
   }
 };
+
+// ==> Method responsible for list all 'Pharmacies'
+exports.listAllPharmacies = async (req, res) => {
+  try {
+    const { rows } = await db.query(
+      'SELECT * FROM pharmacy ORDER BY pharmacy_name ASC'
+    );
+
+    res.status(200).send(rows);
+  } catch (error) {
+    console.log('listAllPharmacies', error);
+    res.status(500).send({
+      message: 'Error to list all the Pharmacies',
+    });
+  }
+};

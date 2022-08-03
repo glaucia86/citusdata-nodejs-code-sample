@@ -1,5 +1,7 @@
+# Default api
 GET http://localhost:3000/api
 
+# Create a new 'Pharmacy'
 POST http://localhost:3000/api/pharmacies HTTP/1.1
 content-type: application/json
 
@@ -9,3 +11,6 @@ content-type: application/json
   "state": "California",
   "zip_code": 94001
 }
+
+# List all the Pharmacies
+GET http://localhost:3000/api/pharmacies
