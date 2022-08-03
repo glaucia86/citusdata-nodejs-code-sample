@@ -1,0 +1,46 @@
+{
+  "name": "pharmacy-api",
+  "version": "1.0.0",
+  "description": "CRUD Application sample how to use Citus Data [Hyperscale] with Node.js",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon",
+    "lint": "eslint --ext .js -f ./node_modules/eslint-friendly-formatter . --fix",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/glaucia86/citusdata-nodejs-code-sample.git"
+  },
+  "keywords": [
+    "citus",
+    "hyperscale",
+    "database",
+    "azure",
+    "postgres",
+    "nodejs",
+    "javascript",
+    "express",
+    "api",
+    "crud",
+    "sample"
+  ],
+  "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glaucia86/citusdata-nodejs-code-sample/issues"
+  },
+  "homepage": "https://github.com/glaucia86/citusdata-nodejs-code-sample#readme",
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "express": "^4.18.1",
+    "express-promise-router": "^4.1.1",
+    "pg": "^8.7.3"
+  }
+}
