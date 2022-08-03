@@ -17,4 +17,7 @@ router.get('/pharmacies', pharmacyController.listAllPharmacies);
 // Route responsible to list a Pharmacy by Id: (GET) localhost:3000/api/pharmacies/:id
 router.get('/pharmacies/:id', pharmacyController.findPharmacyById);
 
+// Route responsible to update a Pharmacy by Id: (PUT) localhost:3000/api/pharmacies/:id
+router.put('/pharmacies/:id', pharmacyController.updatePharmacyById);
+
 module.exports = router;

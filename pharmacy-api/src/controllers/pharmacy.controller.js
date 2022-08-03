@@ -22,6 +22,8 @@ exports.createPharmacy = async (req, res) => {
         pharmacy: { pharmacy_name, city, state, zip_code },
       },
     });
+
+    return rows;
   } catch (error) {
     console.log('createPharmacy', error);
     res.status(500).send({ message: 'Error to create a new Pharmacy' });
@@ -69,5 +71,31 @@ exports.findPharmacyById = async (req, res) => {
         message: 'Error to find the Pharmacy',
       });
     }
+  }
+};
+
+// ==> Method responsible for update a Pharmacy by Id
+exports.updatePharmacyById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { pharmacy_name, city, state, zip_code } = req.body;
+    const { rows } = await db.query(
+      'UPDATE pharmacy SET pharmacy_name = $1, city = $2, state = $3, zip_code = $4 WHERE pharmacy_id = $5',
+      [pharmacy_name, city, state, zip_code, id]
+    );
+
+    res.status(200).send({
+      message: 'Pharmacy updated successfully!',
+      body: {
+        pharmacy: { id, pharmacy_name, city, state, zip_code },
+      },
+    });
+
+    return rows;
+  } catch (error) {
+    console.log('updatePharmacyById', error);
+    res.status(500).send({
+      message: 'Error to update the Pharmacy',
+    });
   }
 };

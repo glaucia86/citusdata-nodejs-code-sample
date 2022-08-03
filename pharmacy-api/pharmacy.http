@@ -17,3 +17,14 @@ GET http://localhost:3000/api/pharmacies
 
 # List Pharmacy by Id
 GET http://localhost:3000/api/pharmacies/72018b96-af1b-4003-a5ef-6c74fd30882d
+
+# Update Pharmacy by Id
+PUT http://localhost:3000/api/pharmacies/72018b96-af1b-4003-a5ef-6c74fd30882d HTTP/1.1
+content-type: application/json
+
+{
+  "pharmacy_name": "Pharmacy Test 01",
+  "city": "San Diego",
+  "state": "California",
+  "zip_code": 94001
+}
