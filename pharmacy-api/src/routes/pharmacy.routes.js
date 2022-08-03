@@ -14,4 +14,7 @@ router.post('/pharmacies', pharmacyController.createPharmacy);
 // Route responsible to list all 'Pharmacies': (GET) localhost:3000/api/pharmacies
 router.get('/pharmacies', pharmacyController.listAllPharmacies);
 
+// Route responsible to list a Pharmacy by Id: (GET) localhost:3000/api/pharmacies/:id
+router.get('/pharmacies/:id', pharmacyController.findPharmacyById);
+
 module.exports = router;

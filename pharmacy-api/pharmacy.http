@@ -14,3 +14,6 @@ content-type: application/json
 
 # List all the Pharmacies
 GET http://localhost:3000/api/pharmacies
+
+# List Pharmacy by Id
+GET http://localhost:3000/api/pharmacies/72018b96-af1b-4003-a5ef-6c74fd30882d

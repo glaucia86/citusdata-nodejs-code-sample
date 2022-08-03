@@ -43,3 +43,31 @@ exports.listAllPharmacies = async (req, res) => {
     });
   }
 };
+
+// ==> Method responsible for find a Pharmacy by Id
+exports.findPharmacyById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { rows } = await db.query(
+      'SELECT * FROM pharmacy WHERE pharmacy_id = $1',
+      [id]
+    );
+
+    if (!rows.length) {
+      throw 'pharmacy_not_found';
+    }
+
+    res.status(200).send(rows[0]);
+  } catch (error) {
+    console.log('findPharmacyById', error);
+    if (error === 'pharmacy_not_found') {
+      res.status(404).send({
+        message: 'Pharmacy not found.',
+      });
+    } else {
+      res.status(500).send({
+        message: 'Error to find the Pharmacy',
+      });
+    }
+  }
+};
