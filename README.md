@@ -12,7 +12,6 @@ A Citus Data [Hyperscale] code sample using Node.Js API
 - Some Visual Studio Code Extensions:
   - **[Azure Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack&WT.mc_id=javascript-72292-gllemos)**
   - **[REST Client Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client&WT.mc_id=javascript-72292-gllemos)**
-  - **[Remote Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)**
 
 ## 🔥 How to run the application locally? 
 
