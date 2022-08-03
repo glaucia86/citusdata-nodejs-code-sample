@@ -99,3 +99,19 @@ exports.updatePharmacyById = async (req, res) => {
     });
   }
 };
+
+// ==> Method responsible for delete a Pharmacy by Id
+exports.deletePharmacyById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await db.query('DELETE FROM pharmacy WHERE pharmacy_id = $1', [id]);
+    res.status(200).send({
+      message: 'Pharmacy deleted successfully!',
+    });
+  } catch (error) {
+    console.log('deletePharmacyById', error);
+    res.status(500).send({
+      message: 'Error to delete the Pharmacy',
+    });
+  }
+};

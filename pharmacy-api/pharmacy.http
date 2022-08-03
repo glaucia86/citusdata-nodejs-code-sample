@@ -6,25 +6,28 @@ POST http://localhost:3000/api/pharmacies HTTP/1.1
 content-type: application/json
 
 {
-  "pharmacy_name": "Pharmacy Test 01",
+  "pharmacy_name": "Doctor Pharmacy",
   "city": "San Diego",
   "state": "California",
-  "zip_code": 94001
+  "zip_code": 94003
 }
 
 # List all the Pharmacies
 GET http://localhost:3000/api/pharmacies
 
 # List Pharmacy by Id
-GET http://localhost:3000/api/pharmacies/72018b96-af1b-4003-a5ef-6c74fd30882d
+GET http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344
 
 # Update Pharmacy by Id
-PUT http://localhost:3000/api/pharmacies/72018b96-af1b-4003-a5ef-6c74fd30882d HTTP/1.1
+PUT http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344 HTTP/1.1
 content-type: application/json
 
 {
-  "pharmacy_name": "Pharmacy Test 01",
+  "pharmacy_name": "Doctor Pharmacy",
   "city": "San Diego",
   "state": "California",
-  "zip_code": 94001
+  "zip_code": 94003
 }
+
+# Delete Pharmacy by Id
+DELETE http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344 HTTP/1.1

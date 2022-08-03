@@ -20,4 +20,7 @@ router.get('/pharmacies/:id', pharmacyController.findPharmacyById);
 // Route responsible to update a Pharmacy by Id: (PUT) localhost:3000/api/pharmacies/:id
 router.put('/pharmacies/:id', pharmacyController.updatePharmacyById);
 
+// Route responsible to delete a Pharmacy by Id: (DELETE) localhost:3000/api/pharmacies/:id
+router.delete('/pharmacies/:id', pharmacyController.deletePharmacyById);
+
 module.exports = router;
