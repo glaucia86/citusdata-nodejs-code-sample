@@ -6,7 +6,7 @@ POST http://localhost:3000/api/pharmacies HTTP/1.1
 content-type: application/json
 
 {
-  "pharmacy_name": "Doctor Pharmacy",
+  "pharmacy_name": "Walgreens",
   "city": "San Diego",
   "state": "California",
   "zip_code": 94003
@@ -23,7 +23,7 @@ PUT http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344 HT
 content-type: application/json
 
 {
-  "pharmacy_name": "Doctor Pharmacy",
+  "pharmacy_name": "Walgreens",
   "city": "San Diego",
   "state": "California",
   "zip_code": 94003

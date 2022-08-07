@@ -84,6 +84,10 @@ exports.updatePharmacyById = async (req, res) => {
       [pharmacy_name, city, state, zip_code, id]
     );
 
+    if (!rows.length) {
+      throw 'pharmacy_not_found';
+    }
+
     res.status(200).send({
       message: 'Pharmacy updated successfully!',
       body: {
@@ -94,9 +98,15 @@ exports.updatePharmacyById = async (req, res) => {
     return rows;
   } catch (error) {
     console.log('updatePharmacyById', error);
-    res.status(500).send({
-      message: 'Error to update the Pharmacy',
-    });
+    if (error == 'pharmacy_not_found') {
+      res.status(404).send({
+        message: 'Pharmacy not found.'
+      });
+    } else {
+      res.status(500).send({
+        message: 'Error to update the Pharmacy!'
+      });
+    }
   }
 };
 
