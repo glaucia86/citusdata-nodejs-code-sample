@@ -19,15 +19,15 @@ GET http://localhost:3000/api/pharmacies
 GET http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344
 
 # Update Pharmacy by Id
-PUT http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344 HTTP/1.1
+PUT http://localhost:3000/api/pharmacies/c34f4916-124a-440c-890f-813ff7fd2004 HTTP/1.1
 content-type: application/json
 
 {
-  "pharmacy_name": "Walgreens",
-  "city": "San Diego",
+  "pharmacy_name": "Teste",
+  "city": "Santa Monica",
   "state": "California",
-  "zip_code": 94003
+  "zip_code": 94004
 }
 
 # Delete Pharmacy by Id
-DELETE http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344 HTTP/1.1
+DELETE http://localhost:3000/api/pharmacies/c34f4916-124a-440c-890f-813ff7fd2004 HTTP/1.1

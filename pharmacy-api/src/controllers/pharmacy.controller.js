@@ -5,12 +5,13 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
+const { DatabaseError } = require('pg');
 const db = require('../config/db.config');
 
 // ==> Method responsible for create a new 'Pharmacy
 exports.createPharmacy = async (req, res) => {
-  const { pharmacy_name, city, state, zip_code } = req.body;
   try {
+    const { pharmacy_name, city, state, zip_code } = req.body;
     const { rows } = await db.query(
       'INSERT INTO pharmacy (pharmacy_name, city, state, zip_code) VALUES ($1, $2, $3, $4)',
       [pharmacy_name, city, state, zip_code]
@@ -48,8 +49,8 @@ exports.listAllPharmacies = async (req, res) => {
 
 // ==> Method responsible for find a Pharmacy by Id
 exports.findPharmacyById = async (req, res) => {
-  const { id } = req.params;
   try {
+    const { id } = req.params;
     const { rows } = await db.query(
       'SELECT * FROM pharmacy WHERE pharmacy_id = $1',
       [id]
@@ -76,35 +77,38 @@ exports.findPharmacyById = async (req, res) => {
 
 // ==> Method responsible for update a Pharmacy by Id
 exports.updatePharmacyById = async (req, res) => {
-  const { id } = req.params;
   try {
+    const id = req.params.id;
     const { pharmacy_name, city, state, zip_code } = req.body;
-    const { rows } = await db.query(
-      'UPDATE pharmacy SET pharmacy_name = $1, city = $2, state = $3, zip_code = $4 WHERE pharmacy_id = $5',
-      [pharmacy_name, city, state, zip_code, id]
-    );
 
-    if (!rows.length) {
+    const pharmarcyRegistryExists = await db.query('SELECT * FROM pharmacy WHERE pharmacy_id = $1', [id]);
+
+    if (!pharmarcyRegistryExists.rows.length) {
       throw 'pharmacy_not_found';
+    } else {
+      const { rows } = await db.query(
+        'UPDATE pharmacy SET pharmacy_name = $1, city = $2, state = $3, zip_code = $4 WHERE pharmacy_id = $5',
+        [pharmacy_name, city, state, zip_code, id]
+      );
+
+      res.status(200).send({
+        message: 'Pharmacy updated successfully!',
+        body: {
+          pharmacy: { id, pharmacy_name, city, state, zip_code },
+        },
+      });
+
+      return rows;
     }
-
-    res.status(200).send({
-      message: 'Pharmacy updated successfully!',
-      body: {
-        pharmacy: { id, pharmacy_name, city, state, zip_code },
-      },
-    });
-
-    return rows;
   } catch (error) {
     console.log('updatePharmacyById', error);
-    if (error == 'pharmacy_not_found') {
+    if (error === 'pharmacy_not_found') {
       res.status(404).send({
-        message: 'Pharmacy not found.'
+        message: 'Pharmacy not found.',
       });
     } else {
       res.status(500).send({
-        message: 'Error to update the Pharmacy!'
+        message: 'Error to update the Pharmacy',
       });
     }
   }
