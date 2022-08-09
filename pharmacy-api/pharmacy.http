@@ -6,17 +6,17 @@ POST http://localhost:3000/api/pharmacies HTTP/1.1
 content-type: application/json
 
 {
-  "pharmacy_name": "Walgreens",
+  "pharmacy_name": "Teste-Database",
   "city": "San Diego",
   "state": "California",
-  "zip_code": 94003
+  "zip_code": 94008
 }
 
 # List all the Pharmacies
 GET http://localhost:3000/api/pharmacies
 
 # List Pharmacy by Id
-GET http://localhost:3000/api/pharmacies/49d396c1-36d1-470f-976c-357951adb344
+GET http://localhost:3000/api/pharmacies/136cf9f9-f755-4f7e-b84b-4a9e8239943d
 
 # Update Pharmacy by Id
 PUT http://localhost:3000/api/pharmacies/c34f4916-124a-440c-890f-813ff7fd2004 HTTP/1.1

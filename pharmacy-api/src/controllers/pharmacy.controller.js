@@ -5,8 +5,7 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-const { DatabaseError } = require('pg');
-const db = require('../config/db.config');
+const db = require('../config/postgres-database');
 
 // ==> Method responsible for create a new 'Pharmacy
 exports.createPharmacy = async (req, res) => {
@@ -19,9 +18,6 @@ exports.createPharmacy = async (req, res) => {
 
     res.status(201).send({
       message: 'Pharmacy created successfully!',
-      body: {
-        pharmacy: { pharmacy_name, city, state, zip_code },
-      },
     });
 
     return rows;
@@ -67,11 +63,10 @@ exports.findPharmacyById = async (req, res) => {
       res.status(404).send({
         message: 'Pharmacy not found.',
       });
-    } else {
-      res.status(500).send({
-        message: 'Error to find the Pharmacy',
-      });
     }
+    res.status(500).send({
+      message: 'Error to list the Pharmacy',
+    });
   }
 };
 
@@ -81,7 +76,10 @@ exports.updatePharmacyById = async (req, res) => {
     const id = req.params.id;
     const { pharmacy_name, city, state, zip_code } = req.body;
 
-    const pharmarcyRegistryExists = await db.query('SELECT * FROM pharmacy WHERE pharmacy_id = $1', [id]);
+    const pharmarcyRegistryExists = await db.query(
+      'SELECT * FROM pharmacy WHERE pharmacy_id = $1',
+      [id]
+    );
 
     if (!pharmarcyRegistryExists.rows.length) {
       throw 'pharmacy_not_found';
