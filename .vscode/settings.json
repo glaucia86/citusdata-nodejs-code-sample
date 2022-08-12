@@ -1,8 +1,13 @@
 {
     "azureFunctions.deploySubpath": "pharmacy-serverless-api",
-    "azureFunctions.postDeployTask": "npm install (functions)",
+    "azureFunctions.postDeployTask": "npm install",
     "azureFunctions.projectLanguage": "JavaScript",
     "azureFunctions.projectRuntime": "~4",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "npm prune (functions)"
+    "azureFunctions.preDeployTask": "npm prune",
+    "liveServer.settings.proxy": {
+        "enable": true,
+        "baseUri": "/api/pharmacies/",
+        "proxyUri": "http://localhost:7071/api/pharmacies/"
+    }
 }
