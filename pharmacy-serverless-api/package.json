@@ -23,6 +23,7 @@
   "homepage": "https://github.com/glaucia86/citusdata-nodejs-code-sample#readme",
   "devDependencies": {
     "@azure/functions": "^3.2.0",
+    "eslint": "^8.21.0",
     "prisma": "3.14"
   },
   "dependencies": {
