@@ -1,13 +1,27 @@
 {
-  "name": "",
+  "name": "pharmacy-serverless-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Back-End application using Azure Functions + Citus Data (PostgreSQL)",
   "scripts": {
-    "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "dev": "func start"
   },
+  "keywords": [
+    "crud-api",
+    "javascript",
+    "azure-functions",
+    "postgresql",
+    "citus-data",
+    "azure",
+    "serverless",
+    "prisma"
+  ],
+  "author": "Glaucia Lemos <@glaucia_lemos86 - Twitter>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glaucia86/citusdata-nodejs-code-sample/issues"
+  },
+  "homepage": "https://github.com/glaucia86/citusdata-nodejs-code-sample#readme",
   "dependencies": {},
   "devDependencies": {
-    "azure-functions-core-tools": "^4.x"
   }
 }
