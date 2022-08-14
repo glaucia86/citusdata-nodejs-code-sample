@@ -19,14 +19,14 @@ GET http://localhost:7071/api/pharmacies
 GET http://localhost:7071/api/pharmacies/136cf9f9-f755-4f7e-b84b-4a9e8239943d
 
 # Update Pharmacy by Id
-PUT http://localhost:7071/api/pharmacies/c34f4916-124a-440c-890f-813ff7fd2004 HTTP/1.1
+PUT http://localhost:7071/api/pharmacies/7e459309-538a-4918-99e8-806da7b693e5 HTTP/1.1
 content-type: application/json
 
 {
-  "pharmacy_name": "Teste",
-  "city": "Santa Monica",
-  "state": "California",
-  "zip_code": 94004
+  "pharmacy_name": "Pharma Hall",
+  "city": "New York",
+  "state": "New York City",
+  "zip_code": 22795-999
 }
 
 # Delete Pharmacy by Id

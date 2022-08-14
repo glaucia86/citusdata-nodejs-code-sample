@@ -5,11 +5,10 @@ generator client {
 datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model pharmacy {
-  pharmacy_id   String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  pharmacy_id   String @id @default(uuid()) @unique
   pharmacy_name String @db.VarChar(255)
   city          String @db.VarChar(255)
   state         String @db.VarChar(255)
