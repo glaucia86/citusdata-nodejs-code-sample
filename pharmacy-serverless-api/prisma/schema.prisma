@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model pharmacy {
+  pharmacy_id   String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  pharmacy_name String @db.VarChar(255)
+  city          String @db.VarChar(255)
+  state         String @db.VarChar(255)
+  zip_code      Int
+}

@@ -6,8 +6,8 @@
  */
 
 module.exports = function (status, message) {
-    return {
-        status: status,
-        body: message,
-    };
+  return {
+    status: status,
+    body: message,
+  };
 };
