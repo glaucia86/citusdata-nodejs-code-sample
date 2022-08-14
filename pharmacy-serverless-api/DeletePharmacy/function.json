@@ -5,8 +5,8 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["get"],
-      "route": "pharmacies"
+      "methods": ["delete"],
+      "route": "pharmacies/{id}"
     },
     {
       "type": "http",

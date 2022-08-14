@@ -13,13 +13,13 @@ module.exports = async function (context, req) {
     const { id } = req.params;
     const { pharmacy_name, city, state, zip_code,} = req.body;
 
-    const pharmacyRegistrationExists = await prisma.pharmacy.findUnique({
+    const pharmacyExists = await prisma.pharmacy.findUnique({
       where: {
         pharmacy_id: String(id),
       },
     });
 
-    if (!pharmacyRegistrationExists) {
+    if (!pharmacyExists) {
       return handleError(404, 'Pharmacy not found!');
     }
 
