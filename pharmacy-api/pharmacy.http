@@ -6,10 +6,10 @@ POST http://localhost:3000/api/pharmacies HTTP/1.1
 content-type: application/json
 
 {
-  "pharmacy_name": "Teste-Database",
+  "name": "Teste-Database-01",
   "city": "San Diego",
   "state": "California",
-  "zip_code": 94008
+  "zip_code": 94009
 }
 
 # List all the Pharmacies
@@ -23,7 +23,7 @@ PUT http://localhost:3000/api/pharmacies/c34f4916-124a-440c-890f-813ff7fd2004 HT
 content-type: application/json
 
 {
-  "pharmacy_name": "Teste",
+  "name": "Teste",
   "city": "Santa Monica",
   "state": "California",
   "zip_code": 94004

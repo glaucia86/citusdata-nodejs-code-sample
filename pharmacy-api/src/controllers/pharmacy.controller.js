@@ -6,35 +6,32 @@
  */
 
 const db = require('../config/postgres-database');
+const pharmacyService = require('../services/pharmacy.services');
 
 // ==> Method responsible for create a new 'Pharmacy
 exports.createPharmacy = async (req, res) => {
   try {
-    const { pharmacy_name, city, state, zip_code } = req.body;
-    const { rows } = await db.query(
-      'INSERT INTO pharmacy (pharmacy_name, city, state, zip_code) VALUES ($1, $2, $3, $4)',
-      [pharmacy_name, city, state, zip_code]
-    );
-
-    res.status(201).send({
-      message: 'Pharmacy created successfully!',
+    const { name, city, state, zip_code } = req.body;
+    const pharmacy = await pharmacyService.createPharmacy({
+      name,
+      city,
+      state,
+      zip_code,
     });
 
-    return rows;
+    res.status(201).json(pharmacy);
   } catch (error) {
-    console.log('createPharmacy', error);
-    res.status(500).send({ message: 'Error to create a new Pharmacy' });
+    res.status(500).send({
+      message: 'Error to create the Pharmacy',
+    });
   }
 };
 
 // ==> Method responsible for list all 'Pharmacies'
 exports.listAllPharmacies = async (req, res) => {
   try {
-    const { rows } = await db.query(
-      'SELECT * FROM pharmacy ORDER BY pharmacy_name ASC'
-    );
-
-    res.status(200).send(rows);
+    const result = await pharmacyService.listAllPharmacies();
+    res.status(200).send(result);
   } catch (error) {
     console.log('listAllPharmacies', error);
     res.status(500).send({
@@ -47,10 +44,9 @@ exports.listAllPharmacies = async (req, res) => {
 exports.findPharmacyById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { rows } = await db.query(
-      'SELECT * FROM pharmacy WHERE pharmacy_id = $1',
-      [id]
-    );
+    const { rows } = await db.query('SELECT * FROM pharmacy WHERE id = $1', [
+      id,
+    ]);
 
     if (!rows.length) {
       throw 'pharmacy_not_found';
@@ -74,10 +70,10 @@ exports.findPharmacyById = async (req, res) => {
 exports.updatePharmacyById = async (req, res) => {
   try {
     const id = req.params.id;
-    const { pharmacy_name, city, state, zip_code } = req.body;
+    const { name, city, state, zip_code } = req.body;
 
     const pharmarcyRegistryExists = await db.query(
-      'SELECT * FROM pharmacy WHERE pharmacy_id = $1',
+      'SELECT * FROM pharmacies WHERE id = $1',
       [id]
     );
 
@@ -85,14 +81,14 @@ exports.updatePharmacyById = async (req, res) => {
       throw 'pharmacy_not_found';
     } else {
       const { rows } = await db.query(
-        'UPDATE pharmacy SET pharmacy_name = $1, city = $2, state = $3, zip_code = $4 WHERE pharmacy_id = $5',
-        [pharmacy_name, city, state, zip_code, id]
+        'UPDATE pharmacies SET name = $1, city = $2, state = $3, zip_code = $4 WHERE id = $5',
+        [name, city, state, zip_code, id]
       );
 
       res.status(200).send({
         message: 'Pharmacy updated successfully!',
         body: {
-          pharmacy: { id, pharmacy_name, city, state, zip_code },
+          pharmacy: { id, name, city, state, zip_code },
         },
       });
 
@@ -116,7 +112,7 @@ exports.updatePharmacyById = async (req, res) => {
 exports.deletePharmacyById = async (req, res) => {
   const { id } = req.params;
   try {
-    await db.query('DELETE FROM pharmacy WHERE pharmacy_id = $1', [id]);
+    await db.query('DELETE FROM pharmacy WHERE id = $1', [id]);
     res.status(200).send({
       message: 'Pharmacy deleted successfully!',
     });
